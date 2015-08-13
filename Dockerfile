@@ -9,7 +9,7 @@ RUN sudo apt-get install -qq -y \
     libaprutil1-dev
 
 RUN cd /tmp;                                                              \
-    curl -LO http://apache.mirror.uber.com.au/httpd/httpd-2.4.10.tar.bz2; \
+    curl -LO http://apache.mirror.serversaustralia.com.au//httpd/httpd-2.4.12.tar.bz2; \
     tar xvjf *.tar.bz2; rm -f *.tar.bz2;                                  \
     cd httpd-*;                                                           \
     ./configure                                                           \
@@ -21,6 +21,7 @@ RUN cd /tmp;                                                              \
       --enable-rewrite                                                    \
       --enable-deflate                                                    \
       --enable-ssl                                                        \
+      --with-mpm=prefork                                                  \
       --enable-mime-magic                                                 \
       ;                                                                   \
     make && make install;                                                 \
